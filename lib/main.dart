@@ -13,9 +13,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Купи и точка',
-      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Palette.primary),
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Palette.primary),
         useMaterial3: true,
         brightness: Brightness.light,
+        fontFamily: 'Roboto',
+        iconTheme: const IconThemeData(size: 24),
+        inputDecorationTheme: const InputDecorationTheme(
+            labelStyle: TextStyle(
+                color: Palette.onSurfaceVariant, fontWeight: FontWeight.w400),
+            contentPadding: EdgeInsets.all(16),
+            border: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(16)))),
       ),
       routerConfig: router,
       debugShowCheckedModeBanner: false,

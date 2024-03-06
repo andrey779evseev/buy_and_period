@@ -1,8 +1,21 @@
 import 'package:buy_and_period/shared/palette.dart';
 import 'package:flutter/material.dart';
 
-class SignInScreen extends StatelessWidget {
+class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
+
+  @override
+  State<SignInScreen> createState() => _SignInScreenState();
+}
+
+class _SignInScreenState extends State<SignInScreen> {
+  var _passwordVisible = false;
+
+  void togglePasswordVisibility() {
+    setState(() {
+      _passwordVisible = !_passwordVisible;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,9 +55,39 @@ class SignInScreen extends StatelessWidget {
               child: TabBarView(
                 children: [
                   Padding(
-                    padding:
-                        EdgeInsets.symmetric(vertical: 100, horizontal: 16),
-                    child: Text('ss'),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 100, horizontal: 16),
+                    child: Column(
+                      children: [
+                        const TextField(
+                          decoration: InputDecoration(
+                            labelText: 'Телефон',
+                            prefixIcon: Icon(
+                              Icons.local_phone_outlined,
+                            ),
+                          ),
+                          keyboardType: TextInputType.phone,
+                          autofillHints: [AutofillHints.telephoneNumber],
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        TextField(
+                          decoration: InputDecoration(
+                              labelText: 'Пароль',
+                              prefixIcon: const Icon(Icons.lock_outline),
+                              suffixIcon: IconButton(
+                                icon: Icon(_passwordVisible
+                                    ? Icons.visibility_off_outlined
+                                    : Icons.visibility_outlined),
+                                onPressed: togglePasswordVisibility,
+                              )),
+                          obscureText: !_passwordVisible,
+                          keyboardType: TextInputType.visiblePassword,
+                          autofillHints: const [AutofillHints.password],
+                        )
+                      ],
+                    ),
                   ),
                   Text('Signout'),
                 ],
