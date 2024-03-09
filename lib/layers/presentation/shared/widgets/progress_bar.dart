@@ -1,3 +1,11 @@
+// 
+// 
+// THIS IS NOT MY COMPONENT
+// this is default Material ProgressBar
+// but with rounded paths
+// 
+// 
+
 library curved_progress_bar;
 
 import 'dart:math' as math;

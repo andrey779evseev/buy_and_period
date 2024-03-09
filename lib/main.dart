@@ -1,9 +1,10 @@
-import 'package:buy_and_period/router.dart';
-import 'package:buy_and_period/shared/palette.dart';
+import 'package:buy_and_period/layers/presentation/router.dart';
+import 'package:buy_and_period/layers/presentation/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 void main() {
-  runApp(const MyApp());
+  initializeDateFormatting('ru', null).then((_) => runApp(const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -13,22 +14,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Купи и точка',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Palette.primary),
-        useMaterial3: true,
-        brightness: Brightness.light,
-        fontFamily: 'Roboto',
-        iconTheme: const IconThemeData(size: 24),
-        inputDecorationTheme: const InputDecorationTheme(
-            labelStyle: TextStyle(
-                color: Palette.onSurfaceVariant, fontWeight: FontWeight.w400),
-            contentPadding: EdgeInsets.all(16),
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(16)))),
-      ),
+      theme: themeData,
       routerConfig: router,
       debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.light,
     );
   }
 }
