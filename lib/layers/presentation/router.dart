@@ -1,5 +1,4 @@
 import 'package:buy_and_period/layers/presentation/screens/about/view/about_screen.dart';
-import 'package:buy_and_period/layers/presentation/screens/ad/display/view/ad_display_screen.dart';
 import 'package:buy_and_period/layers/presentation/screens/auth/view/auth_screen.dart';
 import 'package:buy_and_period/layers/presentation/screens/auth/view/reset_password/forget_password_screen.dart';
 import 'package:buy_and_period/layers/presentation/screens/auth/view/reset_password/new_password_screen.dart';
@@ -21,11 +20,6 @@ abstract class Routes {
 
   static const home = 'home';
   static const favorite = 'favorite';
-  // h (home) - ad display
-  static const hAdDisplay = 'h-ad-display';
-  // f (favorite) - ad display
-  // for correct .pop(), and navigation stack
-  static const fAdDisplay = 'f-ad-display';
 }
 
 final router = GoRouter(
@@ -67,26 +61,10 @@ final router = GoRouter(
     GoRoute(
         path: '/${Routes.home}',
         name: Routes.home,
-        builder: (context, state) => const HomeScreen(),
-        routes: [
-          GoRoute(
-            path: '${Routes.hAdDisplay}/:adId',
-            name: Routes.hAdDisplay,
-            builder: (context, state) =>
-                AdDisplayScreen(int.parse(state.pathParameters['adId']!)),
-          )
-        ]),
+        builder: (context, state) => const HomeScreen()),
     GoRoute(
         path: '/${Routes.favorite}',
         name: Routes.favorite,
-        builder: (context, state) => const FavoriteScreen(),
-        routes: [
-          GoRoute(
-            path: '${Routes.fAdDisplay}/:adId',
-            name: Routes.fAdDisplay,
-            builder: (context, state) =>
-                AdDisplayScreen(int.parse(state.pathParameters['adId']!)),
-          )
-        ]),
+        builder: (context, state) => const FavoriteScreen(),),
   ],
 );

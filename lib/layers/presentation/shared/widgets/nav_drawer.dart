@@ -1,5 +1,6 @@
 import 'package:buy_and_period/layers/presentation/palette.dart';
 import 'package:buy_and_period/layers/presentation/router.dart';
+import 'package:buy_and_period/layers/presentation/sheets/settings_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -17,11 +18,17 @@ class NavDrawer extends StatelessWidget {
           child: Column(
             children: [
               buildHeader(),
-              buildItem(Icons.settings_outlined, 'Настройки', () {}),
+              buildItem(Icons.settings_outlined, 'Настройки', () {
+                showModalBottomSheet(
+                  context: context,
+                  constraints: const BoxConstraints(maxHeight: 285),
+                  builder: (context) => const SettingsBottomSheet(),
+                );
+              }),
               buildItem(Icons.info_outline, 'О Приложении', () {
                 context.replaceNamed(Routes.about);
               }),
-              const Divider(),
+              const Divider(indent: 16, endIndent: 16,),
               buildItem(Icons.output_outlined, 'Выйти', () {}),
             ],
           ),
@@ -41,7 +48,8 @@ class NavDrawer extends StatelessWidget {
             const SizedBox(width: 12),
             Text(label,
                 style: const TextStyle(
-                    color: Palette.onSurfaceVariant, fontWeight: FontWeight.w500))
+                    color: Palette.onSurfaceVariant,
+                    fontWeight: FontWeight.w500))
           ],
         ),
       ),

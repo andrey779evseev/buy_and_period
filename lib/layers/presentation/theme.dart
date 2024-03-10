@@ -90,9 +90,14 @@ final themeData = ThemeData(
             color: Palette.onSurfaceVariant, fontWeight: FontWeight.w500)),
     // ------------------------------------------------------
     dividerTheme: const DividerThemeData(
-      indent: 16,
-      endIndent: 16,
       color: Palette.outlineVariant,
+    ),
+    // ------------------------------------------------------
+    switchTheme: const SwitchThemeData(
+      thumbColor: MaterialStatePropertyAll(Palette.outline),
+      trackColor: MaterialStatePropertyAll(Palette.surfaceContainerHighest),
+      trackOutlineColor: MaterialStatePropertyAll(Palette.outline),
+      trackOutlineWidth: MaterialStatePropertyAll(2),
     ),
     // ------------------------------------------------------
     filledButtonTheme: const FilledButtonThemeData(

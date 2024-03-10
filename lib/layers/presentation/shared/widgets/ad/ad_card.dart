@@ -2,10 +2,9 @@ import 'dart:math';
 
 import 'package:buy_and_period/layers/data/mock.dart';
 import 'package:buy_and_period/layers/presentation/palette.dart';
-import 'package:buy_and_period/layers/presentation/router.dart';
+import 'package:buy_and_period/layers/presentation/screens/ad/display/view/ad_display_screen.dart';
 import 'package:buy_and_period/layers/presentation/shared/utils/format_date_time.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class AdCard extends StatelessWidget {
   const AdCard({
@@ -19,10 +18,9 @@ class AdCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        final route = GoRouterState.of(context).name;
-        context.goNamed(
-            route == Routes.home ? Routes.hAdDisplay : Routes.fAdDisplay,
-            pathParameters: {'adId': '${Random().nextInt(4)}'});
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => AdDisplayScreen(Random().nextInt(4)),
+        ));
       },
       child: Container(
         decoration: BoxDecoration(
