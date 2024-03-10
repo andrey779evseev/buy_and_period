@@ -1,6 +1,7 @@
 import 'package:buy_and_period/layers/data/mock.dart';
 import 'package:buy_and_period/layers/presentation/layouts/layout.dart';
 import 'package:buy_and_period/layers/presentation/palette.dart';
+import 'package:buy_and_period/layers/presentation/screens/profile/view/profile_screen.dart';
 import 'package:buy_and_period/layers/presentation/shared/utils/format_date_time.dart';
 import 'package:buy_and_period/layers/presentation/shared/widgets/carousel.dart';
 import 'package:flutter/material.dart';
@@ -84,77 +85,83 @@ class AdDisplayScreen extends StatelessWidget {
               indent: 0,
               endIndent: 0,
             ),
-            buildFooter()
+            buildFooter(context)
           ],
         ),
       ),
     );
   }
 
-  Padding buildFooter() {
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: DefaultTextStyle(
-        style: const TextStyle(color: Palette.onSurface, fontSize: 16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 4),
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    foregroundImage: NetworkImage(
-                      ad.author.avatar,
-                    ),
-                    backgroundColor: Palette.surfaceContainer,
-                  ),
-                  const SizedBox(width: 16),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        ad.author.name,
+  Widget buildFooter(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => const ProfileScreen(owner: false)));
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: DefaultTextStyle(
+          style: const TextStyle(color: Palette.onSurface, fontSize: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4),
+                child: Row(
+                  children: [
+                    CircleAvatar(
+                      foregroundImage: NetworkImage(
+                        ad.author.avatar,
                       ),
-                      const SizedBox(height: 4),
-                      DefaultTextStyle(
-                        style: const TextStyle(
-                            color: Palette.onSurfaceVariant, fontSize: 12),
-                        child: Row(
-                          children: [
-                            const Text('на купи - и точка с '),
-                            Text(DateFormat('MMMM yyyy', 'ru')
-                                .format(ad.author.joinedAt))
-                          ],
+                      backgroundColor: Palette.surfaceContainer,
+                    ),
+                    const SizedBox(width: 16),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          ad.author.name,
                         ),
-                      )
-                    ],
-                  )
-                ],
+                        const SizedBox(height: 4),
+                        DefaultTextStyle(
+                          style: const TextStyle(
+                              color: Palette.onSurfaceVariant, fontSize: 12),
+                          child: Row(
+                            children: [
+                              const Text('на купи - и точка с '),
+                              Text(DateFormat('MMMM yyyy', 'ru')
+                                  .format(ad.author.joinedAt))
+                            ],
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(height: 8),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              child: Row(
-                children: [
-                  const Icon(Icons.email_outlined),
-                  const SizedBox(width: 16),
-                  Text(ad.author.email)
-                ],
+              const SizedBox(height: 8),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: Row(
+                  children: [
+                    const Icon(Icons.email_outlined),
+                    const SizedBox(width: 16),
+                    Text(ad.author.email)
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              child: Row(
-                children: [
-                  const Icon(Icons.phone_outlined),
-                  const SizedBox(width: 16),
-                  Text(ad.author.phone)
-                ],
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: Row(
+                  children: [
+                    const Icon(Icons.phone_outlined),
+                    const SizedBox(width: 16),
+                    Text(ad.author.phone)
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -51,12 +51,7 @@ final ads = [
       location: 'Тирасполь',
       postedAt: DateTime.now().subtract(const Duration(hours: 5, minutes: 20)),
       isOwner: true,
-      author: User(
-          avatar: image,
-          name: 'Евлампия Романова',
-          email: 'e.romanova@mail.ru',
-          phone: '+ 373 779 3 12 03',
-          joinedAt: DateTime.now().subtract(const Duration(days: 120)))),
+      author: user),
   Ad(
       image: null,
       title: 'Уроки игры на гитаре',
@@ -68,12 +63,7 @@ final ads = [
       postedAt: DateTime.now()
           .subtract(const Duration(days: 1, hours: 2, minutes: 44)),
       isOwner: false,
-      author: User(
-          avatar: image,
-          name: 'Евлампия Романова',
-          email: 'e.romanova@mail.ru',
-          phone: '+ 373 779 3 12 03',
-          joinedAt: DateTime.now().subtract(const Duration(days: 120)))),
+      author: user),
   Ad(
       image:
           'https://images.unsplash.com/photo-1558185348-fe8fa4cf631f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
@@ -86,12 +76,7 @@ final ads = [
       postedAt: DateTime.now()
           .subtract(const Duration(days: 36, hours: 1, minutes: 2)),
       isOwner: false,
-      author: User(
-          avatar: image,
-          name: 'Евлампия Романова',
-          email: 'e.romanova@mail.ru',
-          phone: '+ 373 779 3 12 03',
-          joinedAt: DateTime.now().subtract(const Duration(days: 120)))),
+      author: user),
   Ad(
       image:
           'https://images.unsplash.com/photo-1595599512948-b9831e5fc11c?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
@@ -104,10 +89,12 @@ final ads = [
       postedAt: DateTime.now()
           .subtract(const Duration(days: 64, hours: 9, minutes: 57)),
       isOwner: false,
-      author: User(
-          avatar: image,
-          name: 'Евлампия Романова',
-          email: 'e.romanova@mail.ru',
-          phone: '+ 373 779 3 12 03',
-          joinedAt: DateTime.now().subtract(const Duration(days: 120))))
+      author: user)
 ];
+
+final user = User(
+    avatar: image,
+    name: 'Евлампия Романова',
+    email: 'e.romanova@mail.ru',
+    phone: '+ 373 779 3 12 03',
+    joinedAt: DateTime.now().subtract(const Duration(days: 120)));

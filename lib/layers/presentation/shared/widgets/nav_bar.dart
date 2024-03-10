@@ -20,14 +20,17 @@ class _NavBarState extends State<NavBar> {
     super.didChangeDependencies();
     final route = GoRouterState.of(context).name;
     switch (route) {
-      case 'home':
+      case Routes.home:
         _currentIndex = 0;
         break;
-      case 'favorite':
+      case Routes.favorite:
         _currentIndex = 1;
         break;
-      default:
+      case Routes.profile:
         _currentIndex = 2;
+        break;
+      default:
+        _currentIndex = 0;
         break;
     }
   }
@@ -47,8 +50,8 @@ class _NavBarState extends State<NavBar> {
           case 1:
             context.replaceNamed(Routes.favorite);
             break;
-          default:
-            context.replaceNamed(Routes.home);
+          case 2:
+            context.replaceNamed(Routes.profile);
             break;
         }
       },
