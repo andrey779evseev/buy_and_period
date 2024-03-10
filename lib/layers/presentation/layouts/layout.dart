@@ -18,6 +18,7 @@ class Layout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawerEnableOpenDragGesture: true,
       appBar: appBar,
       body: SafeArea(
         child: SizedBox(

@@ -9,7 +9,6 @@ class NavDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      width: 360,
       child: SafeArea(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(12, 0, 12, 12),

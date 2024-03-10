@@ -26,7 +26,7 @@ abstract class Routes {
 }
 
 final router = GoRouter(
-  initialLocation: '/home',
+  initialLocation: '/favorite',
   routes: [
     GoRoute(
       path: '/${Routes.splash}',

@@ -14,8 +14,8 @@ class HomeScreen extends StatelessWidget {
           AdCardList(
             ads: ads,
           ),
-          AdCardList(
-            ads: ads.sublist(3),
+          const AdCardList(
+            ads: [],
           )
         ],
       ),

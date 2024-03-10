@@ -31,6 +31,10 @@ final themeData = ThemeData(
       elevation: 0,
     ),
     // ------------------------------------------------------
+    drawerTheme: const DrawerThemeData(
+      width: 360,
+    ),
+    // ------------------------------------------------------
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: Palette.primaryContainer,
     ),

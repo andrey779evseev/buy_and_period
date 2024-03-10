@@ -6,17 +6,18 @@ import 'package:buy_and_period/layers/presentation/shared/widgets/nav_drawer.dar
 import 'package:flutter/material.dart';
 
 class DataLayout extends StatelessWidget {
-  const DataLayout({super.key, required this.body, this.bottom});
+  const DataLayout({super.key, required this.body, this.bottom, this.appBar});
 
   final Widget body;
   final PreferredSizeWidget? bottom;
+  final AppBar? appBar;
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
         length: 2,
         child: Layout(
-          appBar: buildAppBar(context),
+          appBar: appBar ?? buildAppBar(context),
           body: body,
           bottomNavigationBar: const NavBar(),
           floatingActionButton: buildButton(),

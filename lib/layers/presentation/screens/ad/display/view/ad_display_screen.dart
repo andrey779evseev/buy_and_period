@@ -46,7 +46,8 @@ class AdDisplayScreen extends StatelessWidget {
                     ),
                   if (ad.image != null) const SizedBox(height: 16),
                   DefaultTextStyle(
-                    style: const TextStyle(color: Palette.outline, fontSize: 12),
+                    style:
+                        const TextStyle(color: Palette.outline, fontSize: 12),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -103,7 +104,10 @@ class AdDisplayScreen extends StatelessWidget {
               child: Row(
                 children: [
                   CircleAvatar(
-                    foregroundImage: NetworkImage(ad.author.avatar),
+                    foregroundImage: NetworkImage(
+                      ad.author.avatar,
+                    ),
+                    backgroundColor: Palette.surfaceContainer,
                   ),
                   const SizedBox(width: 16),
                   Column(
