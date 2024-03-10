@@ -1,7 +1,7 @@
 import 'package:buy_and_period/layers/data/mock.dart';
 import 'package:buy_and_period/layers/presentation/layouts/layout.dart';
 import 'package:buy_and_period/layers/presentation/palette.dart';
-import 'package:buy_and_period/layers/presentation/screens/profile/view/profile_screen.dart';
+import 'package:buy_and_period/layers/presentation/screens/profile/display/view/profile_screen.dart';
 import 'package:buy_and_period/layers/presentation/shared/utils/format_date_time.dart';
 import 'package:buy_and_period/layers/presentation/shared/widgets/carousel.dart';
 import 'package:flutter/material.dart';

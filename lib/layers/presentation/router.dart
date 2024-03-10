@@ -5,7 +5,8 @@ import 'package:buy_and_period/layers/presentation/screens/auth/view/reset_passw
 import 'package:buy_and_period/layers/presentation/screens/auth/view/reset_password/otp_code_screen.dart';
 import 'package:buy_and_period/layers/presentation/screens/favorite/view/favorite_screen.dart';
 import 'package:buy_and_period/layers/presentation/screens/home/view/home_screen.dart';
-import 'package:buy_and_period/layers/presentation/screens/profile/view/profile_screen.dart';
+import 'package:buy_and_period/layers/presentation/screens/profile/display/view/profile_screen.dart';
+import 'package:buy_and_period/layers/presentation/screens/profile/edit/view/edit_profile_screen.dart';
 import 'package:buy_and_period/layers/presentation/screens/splash/view/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 
@@ -22,10 +23,11 @@ abstract class Routes {
   static const home = 'home';
   static const favorite = 'favorite';
   static const profile = 'profile';
+  static const editProfile = 'edit-profile';
 }
 
 final router = GoRouter(
-  initialLocation: '/profile',
+  initialLocation: '/${Routes.home}',
   routes: [
     GoRoute(
       path: '/${Routes.splash}',
@@ -70,9 +72,15 @@ final router = GoRouter(
       builder: (context, state) => const FavoriteScreen(),
     ),
     GoRoute(
-      path: '/${Routes.profile}',
-      name: Routes.profile,
-      builder: (context, state) => const ProfileScreen(owner: true),
-    ),
+        path: '/${Routes.profile}',
+        name: Routes.profile,
+        builder: (context, state) => const ProfileScreen(owner: true),
+        routes: [
+          GoRoute(
+            path: Routes.editProfile,
+            name: Routes.editProfile,
+            builder: (context, state) => EditProfileScreen(),
+          ),
+        ]),
   ],
 );
