@@ -1,7 +1,7 @@
-import 'package:buy_and_period/layers/presentation/auth/view/sing_up.dart';
-import 'package:buy_and_period/layers/presentation/auth/view/sign_in.dart';
 import 'package:buy_and_period/layers/presentation/router.dart';
-import 'package:buy_and_period/layers/presentation/shared/layouts/auth_layout.dart';
+import 'package:buy_and_period/layers/presentation/layouts/auth_layout.dart';
+import 'package:buy_and_period/layers/presentation/screens/auth/view/sign_in.dart';
+import 'package:buy_and_period/layers/presentation/screens/auth/view/sing_up.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

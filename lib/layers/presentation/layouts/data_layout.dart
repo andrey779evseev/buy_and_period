@@ -1,6 +1,6 @@
 import 'package:buy_and_period/layers/presentation/palette.dart';
-import 'package:buy_and_period/layers/presentation/shared/layouts/layout.dart';
-import 'package:buy_and_period/layers/presentation/shared/sheets/filters_bottom_sheet.dart';
+import 'package:buy_and_period/layers/presentation/layouts/layout.dart';
+import 'package:buy_and_period/layers/presentation/sheets/filters_bottom_sheet.dart';
 import 'package:buy_and_period/layers/presentation/shared/widgets/nav_bar.dart';
 import 'package:buy_and_period/layers/presentation/shared/widgets/nav_drawer.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +44,6 @@ class DataLayout extends StatelessWidget {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      scrolledUnderElevation: 0,
       leadingWidth: double.infinity,
       leading: Padding(
         padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),

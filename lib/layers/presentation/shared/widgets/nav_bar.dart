@@ -16,14 +16,9 @@ class _NavBarState extends State<NavBar> {
   var _currentIndex = 0;
 
   @override
-  void initState() {
-    super.initState();
-    final route = GoRouter.of(context)
-        .routeInformationProvider
-        .value
-        .uri
-        .path
-        .substring(1);
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final route = GoRouterState.of(context).name;
     switch (route) {
       case 'home':
         _currentIndex = 0;

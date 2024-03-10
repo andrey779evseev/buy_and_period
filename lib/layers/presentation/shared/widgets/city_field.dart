@@ -1,5 +1,5 @@
 import 'package:buy_and_period/layers/presentation/palette.dart';
-import 'package:buy_and_period/layers/presentation/shared/sheets/city_bottom_sheet.dart';
+import 'package:buy_and_period/layers/presentation/sheets/city_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 
 // temp

@@ -1,6 +1,6 @@
 import 'package:buy_and_period/layers/presentation/router.dart';
 import 'package:buy_and_period/layers/presentation/shared/widgets/input_field.dart';
-import 'package:buy_and_period/layers/presentation/shared/layouts/auth_layout.dart';
+import 'package:buy_and_period/layers/presentation/layouts/auth_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

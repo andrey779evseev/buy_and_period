@@ -1,5 +1,5 @@
 import 'package:buy_and_period/layers/presentation/palette.dart';
-import 'package:buy_and_period/layers/presentation/shared/layouts/bottom_sheet_layout.dart';
+import 'package:buy_and_period/layers/presentation/layouts/bottom_sheet_layout.dart';
 import 'package:buy_and_period/layers/presentation/shared/widgets/checkbox_field.dart';
 import 'package:buy_and_period/layers/presentation/shared/widgets/city_field.dart';
 import 'package:flutter/material.dart';

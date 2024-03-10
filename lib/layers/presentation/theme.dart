@@ -23,6 +23,8 @@ final themeData = ThemeData(
       indicatorColor: Palette.secondaryContainer,
     ),
     // ------------------------------------------------------
+    scaffoldBackgroundColor: Palette.surface,
+    // ------------------------------------------------------
     bottomSheetTheme: const BottomSheetThemeData(
       dragHandleColor: Palette.outline,
       backgroundColor: Palette.surfaceContainerLow,
@@ -51,6 +53,7 @@ final themeData = ThemeData(
       toolbarHeight: 64,
       titleSpacing: 0,
       centerTitle: false,
+      scrolledUnderElevation: 0,
     ),
     // ------------------------------------------------------
     checkboxTheme: const CheckboxThemeData(
