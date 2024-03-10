@@ -1,3 +1,4 @@
+import 'package:buy_and_period/layers/presentation/screens/about/view/about_screen.dart';
 import 'package:buy_and_period/layers/presentation/screens/ad/display/view/ad_display_screen.dart';
 import 'package:buy_and_period/layers/presentation/screens/auth/view/auth_screen.dart';
 import 'package:buy_and_period/layers/presentation/screens/auth/view/reset_password/forget_password_screen.dart';
@@ -10,6 +11,8 @@ import 'package:go_router/go_router.dart';
 
 abstract class Routes {
   static const splash = 'splash';
+  
+  static const about = 'about';
 
   static const auth = 'auth';
   static const forgetPassword = 'forget-password';
@@ -26,12 +29,17 @@ abstract class Routes {
 }
 
 final router = GoRouter(
-  initialLocation: '/favorite',
+  initialLocation: '/home',
   routes: [
     GoRoute(
       path: '/${Routes.splash}',
       name: Routes.splash,
       builder: (context, state) => const SplashScreen(),
+    ),
+    GoRoute(
+      path: '/${Routes.about}',
+      name: Routes.about,
+      builder: (context, state) => const AboutScreen(),
     ),
     GoRoute(
         path: '/${Routes.auth}',

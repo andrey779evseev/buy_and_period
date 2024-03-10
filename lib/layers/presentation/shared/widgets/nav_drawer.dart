@@ -1,5 +1,7 @@
 import 'package:buy_and_period/layers/presentation/palette.dart';
+import 'package:buy_and_period/layers/presentation/router.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class NavDrawer extends StatelessWidget {
   const NavDrawer({
@@ -15,10 +17,12 @@ class NavDrawer extends StatelessWidget {
           child: Column(
             children: [
               buildHeader(),
-              buildItem(Icons.settings_outlined, 'Настройки'),
-              buildItem(Icons.info_outline, 'О Приложении'),
+              buildItem(Icons.settings_outlined, 'Настройки', () {}),
+              buildItem(Icons.info_outline, 'О Приложении', () {
+                context.replaceNamed(Routes.about);
+              }),
               const Divider(),
-              buildItem(Icons.output_outlined, 'Выйти'),
+              buildItem(Icons.output_outlined, 'Выйти', () {}),
             ],
           ),
         ),
@@ -26,17 +30,20 @@ class NavDrawer extends StatelessWidget {
     );
   }
 
-  Padding buildItem(IconData icon, String label) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      child: Row(
-        children: [
-          Icon(icon),
-          const SizedBox(width: 12),
-          Text(label,
-              style: const TextStyle(
-                  color: Palette.onSurfaceVariant, fontWeight: FontWeight.w500))
-        ],
+  Widget buildItem(IconData icon, String label, void Function() onTap) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        child: Row(
+          children: [
+            Icon(icon),
+            const SizedBox(width: 12),
+            Text(label,
+                style: const TextStyle(
+                    color: Palette.onSurfaceVariant, fontWeight: FontWeight.w500))
+          ],
+        ),
       ),
     );
   }
