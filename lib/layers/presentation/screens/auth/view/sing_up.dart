@@ -1,9 +1,11 @@
 import 'package:buy_and_period/layers/presentation/palette.dart';
+import 'package:buy_and_period/layers/presentation/router.dart';
 import 'package:buy_and_period/layers/presentation/shared/widgets/checkbox_field.dart';
 import 'package:buy_and_period/layers/presentation/shared/widgets/input_field.dart';
 import 'package:buy_and_period/layers/presentation/shared/widgets/password_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
 
 class SignUp extends StatelessWidget {
   SignUp({super.key});
@@ -66,7 +68,9 @@ class SignUp extends StatelessWidget {
         ),
         separator,
         FilledButton(
-          onPressed: () {},
+          onPressed: () {
+            context.replaceNamed(Routes.home);
+          },
           child: const Text('Зарегистрироваться'),
         ),
       ],

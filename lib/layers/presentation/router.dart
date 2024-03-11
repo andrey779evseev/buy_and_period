@@ -27,7 +27,7 @@ abstract class Routes {
 }
 
 final router = GoRouter(
-  initialLocation: '/${Routes.home}',
+  initialLocation: '/${Routes.auth}',
   routes: [
     GoRoute(
       path: '/${Routes.splash}',

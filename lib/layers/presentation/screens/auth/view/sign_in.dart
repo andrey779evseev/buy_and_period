@@ -37,7 +37,9 @@ class SignIn extends StatelessWidget {
         ),
         separator,
         FilledButton(
-          onPressed: () {},
+          onPressed: () {
+            context.replaceNamed(Routes.home);
+          },
           child: const Text('Войти'),
         ),
         separator,

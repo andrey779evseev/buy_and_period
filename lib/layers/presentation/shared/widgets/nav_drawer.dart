@@ -29,7 +29,9 @@ class NavDrawer extends StatelessWidget {
                 context.replaceNamed(Routes.about);
               }),
               const Divider(indent: 16, endIndent: 16,),
-              buildItem(Icons.output_outlined, 'Выйти', () {}),
+              buildItem(Icons.output_outlined, 'Выйти', () {
+                context.replaceNamed(Routes.auth);
+              }),
             ],
           ),
         ),
