@@ -45,6 +45,12 @@ final themeData = ThemeData(
         style:
             ButtonStyle(iconColor: MaterialStatePropertyAll(Palette.outline))),
     // ------------------------------------------------------
+    menuTheme: const MenuThemeData(
+      style: MenuStyle(
+          backgroundColor: MaterialStatePropertyAll(Palette.surfaceContainer),
+          elevation: MaterialStatePropertyAll(0)),
+    ),
+    // ------------------------------------------------------
     tabBarTheme:
         const TabBarTheme(dividerColor: Palette.surfaceContainerHighest),
     // ------------------------------------------------------

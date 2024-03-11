@@ -91,7 +91,8 @@ class EditProfileScreen extends StatelessWidget {
             onPressed: () {
               context.pop();
             },
-            icon: const Icon(Icons.check))
+            icon: const Icon(Icons.check)),
+        const SizedBox(width: 4)
       ],
     );
   }

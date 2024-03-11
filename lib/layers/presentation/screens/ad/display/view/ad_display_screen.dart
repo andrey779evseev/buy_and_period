@@ -178,8 +178,9 @@ class AdDisplayScreen extends StatelessWidget {
       actions: [
         IconButton(
             onPressed: () {},
-            icon:
-                Icon(ad.isOwner ? Icons.edit_outlined : Icons.favorite_outline))
+            icon: Icon(
+                ad.isOwner ? Icons.edit_outlined : Icons.favorite_outline)),
+        const SizedBox(width: 4)
       ],
     );
   }

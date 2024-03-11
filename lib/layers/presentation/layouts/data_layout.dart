@@ -1,5 +1,6 @@
 import 'package:buy_and_period/layers/presentation/palette.dart';
 import 'package:buy_and_period/layers/presentation/layouts/layout.dart';
+import 'package:buy_and_period/layers/presentation/screens/ad/create-edit/view/ad_create_edit_screen.dart';
 import 'package:buy_and_period/layers/presentation/sheets/filters_bottom_sheet.dart';
 import 'package:buy_and_period/layers/presentation/shared/widgets/nav_bar.dart';
 import 'package:buy_and_period/layers/presentation/shared/widgets/nav_drawer.dart';
@@ -20,14 +21,17 @@ class DataLayout extends StatelessWidget {
           appBar: appBar ?? buildAppBar(context),
           body: body,
           bottomNavigationBar: const NavBar(),
-          floatingActionButton: buildButton(),
+          floatingActionButton: buildButton(context),
           drawer: const NavDrawer(),
         ));
   }
 
-  FloatingActionButton buildButton() {
+  FloatingActionButton buildButton(BuildContext context) {
     return FloatingActionButton.small(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => AdEditCreateScreen()));
+      },
       child: const Icon(
         Icons.add,
         color: Palette.onPrimaryContainer,

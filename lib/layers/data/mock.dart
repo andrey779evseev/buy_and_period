@@ -1,3 +1,5 @@
+import 'package:buy_and_period/layers/presentation/shared/widgets/select_field.dart';
+
 class Ad {
   final String? image;
   final String title;
@@ -35,6 +37,33 @@ class User {
       required this.phone,
       required this.joinedAt,
       required this.avatar});
+}
+
+enum Location implements OptionType {
+  Tiraspol(label: 'Тирасполь'),
+  Bendery(label: 'Бендеры'),
+  Grigoriopol(label: 'Григориополь'),
+  Dubossary(label: 'Дубоссары'),
+  Kamenka(label: 'Каменка'),
+  Rybnitsa(label: 'Рыбница'),
+  Slobodzeya(label: 'Слободзея'),
+  Dnestrovsk(label: 'Днестровск');
+
+  final String label;
+
+  const Location({required this.label});
+}
+
+enum Price implements OptionType {
+  rub('руб.'),
+  rubPerHour('руб./час'),
+  rubPerMonth('руб./месяц'),
+  rubPerYear('руб./год'),
+  rubOnce('руб./разово');
+
+  final String label;
+
+  const Price(this.label);
 }
 
 const image =

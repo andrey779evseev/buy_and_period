@@ -67,7 +67,8 @@ class ProfileScreen extends StatelessWidget {
               onPressed: () {
                 context.goNamed(Routes.editProfile);
               },
-              icon: const Icon(Icons.edit_outlined))
+              icon: const Icon(Icons.edit_outlined)),
+        const SizedBox(width: 4)
       ],
     );
   }

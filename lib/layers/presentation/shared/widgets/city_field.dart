@@ -1,22 +1,7 @@
+import 'package:buy_and_period/layers/data/mock.dart';
 import 'package:buy_and_period/layers/presentation/palette.dart';
 import 'package:buy_and_period/layers/presentation/sheets/city_bottom_sheet.dart';
 import 'package:flutter/material.dart';
-
-// temp
-enum Location {
-  Tiraspol(label: 'Тирасполь'),
-  Bendery(label: 'Бендеры'),
-  Grigoriopol(label: 'Григориополь'),
-  Dubossary(label: 'Дубоссары'),
-  Kamenka(label: 'Каменка'),
-  Rybnitsa(label: 'Рыбница'),
-  Slobodzeya(label: 'Слободзея'),
-  Dnestrovsk(label: 'Днестровск');
-
-  final String label;
-
-  const Location({required this.label});
-}
 
 class CityField extends StatefulWidget {
   const CityField({

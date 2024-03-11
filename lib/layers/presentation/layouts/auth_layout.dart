@@ -4,11 +4,7 @@ import 'package:go_router/go_router.dart';
 
 class AuthLayout extends StatelessWidget {
   const AuthLayout(
-      {super.key,
-      required this.body,
-      this.onBack,
-      this.title,
-      this.bottom});
+      {super.key, required this.body, this.onBack, this.title, this.bottom});
 
   final Widget body;
   final void Function()? onBack;
@@ -17,9 +13,10 @@ class AuthLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final onBackFn = onBack ?? () {
-      context.pop();
-    };
+    final onBackFn = onBack ??
+        () {
+          context.pop();
+        };
 
     return Layout(
       appBar: AppBar(
@@ -35,6 +32,7 @@ class AuthLayout extends StatelessWidget {
               icon: const Icon(
                 Icons.translate,
               )),
+          const SizedBox(width: 4)
         ],
         bottom: bottom,
       ),
