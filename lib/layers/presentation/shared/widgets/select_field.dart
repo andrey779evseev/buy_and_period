@@ -1,4 +1,3 @@
-import 'package:buy_and_period/layers/presentation/palette.dart';
 import 'package:flutter/material.dart';
 
 abstract class OptionType {
@@ -27,15 +26,15 @@ class SelectField<T extends OptionType> extends StatelessWidget {
         builder:
             (BuildContext context, MenuController controller, Widget? child) =>
                 TextButton(
-                  style: const ButtonStyle(
-                      overlayColor: MaterialStatePropertyAll(
+                  style: ButtonStyle(
+                      overlayColor: const MaterialStatePropertyAll(
                           Color.fromRGBO(79, 68, 73, 0.12)),
-                      padding: MaterialStatePropertyAll(
+                      padding: const MaterialStatePropertyAll(
                           EdgeInsets.symmetric(horizontal: 8, vertical: 10)),
-                      foregroundColor:
-                          MaterialStatePropertyAll(Palette.onSurfaceVariant),
+                      foregroundColor: MaterialStatePropertyAll(
+                          Theme.of(context).colorScheme.onSurfaceVariant),
                       textStyle: MaterialStatePropertyAll(TextStyle(
-                          color: Palette.onSurfaceVariant,
+                          color: Theme.of(context).colorScheme.onSurfaceVariant,
                           fontWeight: FontWeight.w500))),
                   onPressed: () {
                     if (controller.isOpen) {

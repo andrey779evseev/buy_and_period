@@ -1,4 +1,3 @@
-import 'package:buy_and_period/layers/presentation/palette.dart';
 import 'package:flutter/material.dart';
 
 class InputField extends StatefulWidget {
@@ -38,8 +37,8 @@ class _InputFieldState extends State<InputField> {
     final decoration = widget.decoration.copyWith(
         labelStyle: TextStyle(
             color: focusNode.hasFocus
-                ? Palette.primary
-                : Palette.onSurfaceVariant));
+                ? Theme.of(context).colorScheme.primary
+                : Theme.of(context).colorScheme.onSurfaceVariant));
 
     return TextField(
       controller: widget.controller,

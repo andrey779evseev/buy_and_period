@@ -1,6 +1,5 @@
 import 'package:buy_and_period/layers/data/mock.dart';
 import 'package:buy_and_period/layers/presentation/layouts/layout.dart';
-import 'package:buy_and_period/layers/presentation/palette.dart';
 import 'package:buy_and_period/layers/presentation/shared/widgets/select_field.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -19,83 +18,91 @@ class AdEditCreateScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Layout(
         appBar: buildAppBar(context),
-        body: Padding(
-          padding: const EdgeInsets.only(top: 20),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                buildNameField(),
-                const SizedBox(height: 12),
-                Row(
+        body: Builder(
+          builder: (context) {
+            return Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: SingleChildScrollView(
+                child: Column(
                   children: [
-                    buildPriceField(),
-                    buildPriceTypeField(),
-                    Expanded(child: Container()),
-                    buildLocationField()
+                    buildNameField(context),
+                    const SizedBox(height: 12),
+                    Row(
+                      children: [
+                        buildPriceField(context),
+                        buildPriceTypeField(),
+                        Expanded(child: Container()),
+                        buildLocationField()
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Column(
+                        children: [
+                          TextField(
+                            controller: _description,
+                            decoration: InputDecoration(
+                                contentPadding: const EdgeInsets.all(0),
+                                border: InputBorder.none,
+                                enabledBorder: InputBorder.none,
+                                focusedBorder: InputBorder.none,
+                                constraints: const BoxConstraints(minHeight: 200),
+                                hintText: 'Описание',
+                                hintStyle: TextStyle(
+                                  color: Theme.of(context).colorScheme.onSurface,
+                                  fontSize: 16,
+                                )),
+                            style: TextStyle(
+                                color: Theme.of(context).colorScheme.onSurface,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400),
+                          ),
+                          const SizedBox(height: 16),
+                          buildImageList()
+                        ],
+                      ),
+                    )
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Column(
-                    children: [
-                      TextField(
-                        controller: _description,
-                        decoration: const InputDecoration(
-                            contentPadding: EdgeInsets.all(0),
-                            border: InputBorder.none,
-                            enabledBorder: InputBorder.none,
-                            focusedBorder: InputBorder.none,
-                            constraints: BoxConstraints(minHeight: 200),
-                            hintText: 'Описание',
-                            hintStyle: TextStyle(
-                              color: Palette.onSurface,
-                              fontSize: 16,
-                            )),
-                        style: const TextStyle(
-                            color: Palette.onSurface,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400),
-                      ),
-                      const SizedBox(height: 16),
-                      buildImageList()
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
+              ),
+            );
+          }
         ),
-        bottomNavigationBar: buildBottomBar());
+        bottomNavigationBar: buildBottomBar(context));
   }
 
-  SafeArea buildBottomBar() {
+  SafeArea buildBottomBar(BuildContext context) {
     return SafeArea(
       bottom: true,
       right: false,
       left: false,
       top: false,
-      child: SizedBox(
-        height: 48,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 4),
-          child: Row(
-            children: [
-              IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.photo_camera_outlined,
-                      color: Palette.onSurface)),
-              IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.photo_outlined,
-                      color: Palette.onSurface)),
-              Expanded(child: Container()),
-              IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.more_vert_outlined,
-                      color: Palette.onSurface)),
-            ],
-          ),
-        ),
+      child: Builder(
+        builder: (context) {
+          return SizedBox(
+            height: 48,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              child: Row(
+                children: [
+                  IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.photo_camera_outlined,
+                          color: Theme.of(context).colorScheme.onSurface)),
+                  IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.photo_outlined,
+                          color: Theme.of(context).colorScheme.onSurface)),
+                  Expanded(child: Container()),
+                  IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.more_vert_outlined,
+                          color: Theme.of(context).colorScheme.onSurface)),
+                ],
+              ),
+            ),
+          );
+        }
       ),
     );
   }
@@ -126,15 +133,15 @@ class AdEditCreateScreen extends StatelessWidget {
                       child: Container(
                         decoration: BoxDecoration(
                             border:
-                                Border.all(color: Palette.surface, width: 1),
-                            color: Palette.outline,
+                                Border.all(color: Theme.of(context).colorScheme.surface, width: 1),
+                            color: Theme.of(context).colorScheme.outline,
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(20))),
                         clipBehavior: Clip.antiAlias,
                         width: 26,
                         height: 26,
-                        child: const Icon(Icons.close_outlined,
-                            color: Palette.surface),
+                        child: Icon(Icons.close_outlined,
+                            color: Theme.of(context).colorScheme.surface),
                       ))
                 ],
               ),
@@ -164,7 +171,7 @@ class AdEditCreateScreen extends StatelessWidget {
     );
   }
 
-  TextField buildPriceField() {
+  TextField buildPriceField(BuildContext context) {
     return TextField(
       controller: _price,
       textAlign: TextAlign.end,
@@ -175,28 +182,28 @@ class AdEditCreateScreen extends StatelessWidget {
         focusedBorder: InputBorder.none,
         constraints: BoxConstraints(maxWidth: 32),
       ),
-      style: const TextStyle(color: Palette.onSurfaceVariant, fontSize: 16),
+      style: TextStyle(color: Theme.of(context).colorScheme.onSurfaceVariant, fontSize: 16),
     );
   }
 
-  TextField buildNameField() {
+  TextField buildNameField(BuildContext context) {
     return TextField(
       controller: _name,
-      decoration: const InputDecoration(
-          contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+      decoration: InputDecoration(
+          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
           border: InputBorder.none,
           enabledBorder: InputBorder.none,
           focusedBorder: InputBorder.none,
-          constraints: BoxConstraints(maxHeight: 36),
+          constraints: const BoxConstraints(maxHeight: 36),
           hintText: 'Название',
           hintStyle: TextStyle(
-              color: Palette.onSurface,
+              color: Theme.of(context).colorScheme.onSurface,
               fontSize: 28,
               height: 1,
               letterSpacing: -1,
               fontWeight: FontWeight.w500)),
-      style: const TextStyle(
-          color: Palette.onSurface,
+      style: TextStyle(
+          color: Theme.of(context).colorScheme.onSurface,
           fontSize: 28,
           height: 1,
           letterSpacing: -1,

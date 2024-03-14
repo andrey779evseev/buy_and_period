@@ -3,7 +3,6 @@ import 'package:buy_and_period/layers/presentation/layouts/layout.dart';
 import 'package:buy_and_period/layers/presentation/palette.dart';
 import 'package:buy_and_period/layers/presentation/shared/widgets/input_field.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
 class EditProfileScreen extends StatelessWidget {
@@ -26,20 +25,31 @@ class EditProfileScreen extends StatelessWidget {
             Stack(children: [
               Padding(
                 padding: const EdgeInsets.all(8),
-                child: CircleAvatar(
-                  backgroundColor: Palette.surfaceContainer,
-                  foregroundImage: NetworkImage(user.avatar),
-                  maxRadius: 50,
-                  minRadius: 50,
+                child: Builder(
+                  builder: (context) {
+                    return CircleAvatar(
+                      backgroundColor:
+                          Theme.of(context).brightness == Brightness.light
+                              ? PaletteLight.surfaceContainer
+                              : PaletteDark.surfaceContainer,
+                      foregroundImage: NetworkImage(user.avatar),
+                      maxRadius: 50,
+                      minRadius: 50,
+                    );
+                  }
                 ),
               ),
               Positioned(
                   bottom: 0,
                   right: 0,
-                  child: IconButton.filled(
-                      onPressed: () {},
-                      icon: const Icon(Icons.edit_outlined,
-                          color: Palette.onPrimary)))
+                  child: Builder(
+                    builder: (context) {
+                      return IconButton.filled(
+                          onPressed: () {},
+                          icon: Icon(Icons.edit_outlined,
+                              color: Theme.of(context).colorScheme.onPrimary));
+                    }
+                  ))
             ]),
             const SizedBox(height: 16),
             InputField(

@@ -1,9 +1,9 @@
-import 'package:buy_and_period/layers/presentation/palette.dart';
 import 'package:buy_and_period/layers/presentation/layouts/layout.dart';
+import 'package:buy_and_period/layers/presentation/palette.dart';
 import 'package:buy_and_period/layers/presentation/screens/ad/create-edit/view/ad_create_edit_screen.dart';
-import 'package:buy_and_period/layers/presentation/sheets/filters_bottom_sheet.dart';
 import 'package:buy_and_period/layers/presentation/shared/widgets/nav_bar.dart';
 import 'package:buy_and_period/layers/presentation/shared/widgets/nav_drawer.dart';
+import 'package:buy_and_period/layers/presentation/sheets/filters_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 
 class DataLayout extends StatelessWidget {
@@ -32,9 +32,13 @@ class DataLayout extends StatelessWidget {
         Navigator.of(context).push(
             MaterialPageRoute(builder: (context) => AdEditCreateScreen()));
       },
-      child: const Icon(
-        Icons.add,
-        color: Palette.onPrimaryContainer,
+      child: Builder(
+        builder: (context) {
+          return Icon(
+            Icons.add,
+            color: Theme.of(context).colorScheme.onPrimaryContainer,
+          );
+        }
       ),
     );
   }
@@ -49,21 +53,28 @@ class DataLayout extends StatelessWidget {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      leadingWidth: double.infinity,
-      leading: Padding(
+      leadingWidth: 0,
+      leading: const SizedBox.shrink(),
+      title: Padding(
         padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
         child: Row(
           children: [
-            buildSearch(),
+            buildSearch(context),
             const SizedBox(
               width: 8,
             ),
-            IconButton.filled(
-              onPressed: () => onFiltersTap(context),
-              icon: const Icon(Icons.filter_alt_outlined),
-              style: const ButtonStyle(
-                  backgroundColor: MaterialStatePropertyAll(
-                      Palette.surfaceContainerHighest)),
+            Builder(
+              builder: (context) {
+                return IconButton.filled(
+                  onPressed: () => onFiltersTap(context),
+                  icon: const Icon(Icons.filter_alt_outlined),
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStatePropertyAll(
+                          Theme.of(context).brightness == Brightness.light
+                              ? PaletteLight.surfaceContainerHighest
+                              : PaletteDark.surfaceContainerHighest)),
+                );
+              }
             )
           ],
         ),
@@ -72,30 +83,37 @@ class DataLayout extends StatelessWidget {
     );
   }
 
-  Expanded buildSearch() {
+  Expanded buildSearch(BuildContext context) {
     return Expanded(
-        child: TextField(
-      decoration: InputDecoration(
-          hintText: 'Поиск обьявления',
-          hintStyle: const TextStyle(
-              color: Palette.onSurfaceVariant, fontWeight: FontWeight.w400),
-          contentPadding: const EdgeInsets.all(12),
-          enabledBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.transparent),
-              borderRadius: BorderRadius.all(Radius.circular(28))),
-          focusedBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.transparent),
-              borderRadius: BorderRadius.all(Radius.circular(28))),
-          fillColor: Palette.surfaceContainerHigh,
-          filled: true,
-          prefixIcon: Builder(
-              builder: (context) => IconButton(
-                  onPressed: () {
-                    Scaffold.of(context).openDrawer();
-                  },
-                  icon: const Icon(
-                    Icons.menu,
-                  )))),
-    ));
+        child: Builder(
+          builder: (context) {
+            return TextField(
+                  decoration: InputDecoration(
+              hintText: 'Поиск обьявления',
+              hintStyle: TextStyle(
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
+                  fontWeight: FontWeight.w400),
+              contentPadding: const EdgeInsets.all(12),
+              enabledBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.transparent),
+                  borderRadius: BorderRadius.all(Radius.circular(28))),
+              focusedBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.transparent),
+                  borderRadius: BorderRadius.all(Radius.circular(28))),
+              fillColor: Theme.of(context).brightness == Brightness.light
+                  ? PaletteLight.surfaceContainerHighest
+                  : PaletteDark.surfaceContainerHighest,
+              filled: true,
+              prefixIcon: Builder(
+                  builder: (context) => IconButton(
+                      onPressed: () {
+                        Scaffold.of(context).openDrawer();
+                      },
+                      icon: const Icon(
+                        Icons.menu,
+                      )))),
+                );
+          }
+        ));
   }
 }

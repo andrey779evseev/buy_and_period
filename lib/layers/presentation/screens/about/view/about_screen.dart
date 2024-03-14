@@ -1,5 +1,4 @@
 import 'package:buy_and_period/layers/presentation/layouts/layout.dart';
-import 'package:buy_and_period/layers/presentation/palette.dart';
 import 'package:buy_and_period/layers/presentation/router.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -16,96 +15,104 @@ class AboutScreen extends StatelessWidget {
                 context.replaceNamed(Routes.home);
               },
               icon: const Icon(Icons.arrow_back)),
-          title: const Text('О приложении',
-              style: TextStyle(
-                  color: Palette.onSurface,
-                  fontSize: 22,
-                  fontWeight: FontWeight.w500)),
+          title: Builder(
+            builder: (context) {
+              return Text('О приложении',
+                  style: TextStyle(
+                      color: Theme.of(context).colorScheme.onSurface,
+                      fontSize: 22,
+                      fontWeight: FontWeight.w500));
+            }
+          ),
           titleSpacing: 0,
           centerTitle: false,
         ),
         body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
-            child: DefaultTextStyle(
-              style: const TextStyle(color: Palette.onSurfaceVariant),
-              textAlign: TextAlign.start,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  RichText(
-                      text: const TextSpan(
-                          style: TextStyle(
-                            color: Palette.onSurfaceVariant,
-                          ),
-                          children: [
-                        TextSpan(text: 'Добро пожаловать в '),
-                        TextSpan(
-                            text: 'Купи - и точка!',
-                            style: TextStyle(fontWeight: FontWeight.w700)),
-                        TextSpan(
-                            text:
-                                ' – ваш универсальный помощник в мире объявлений! Наше приложение предоставляет удобный и безопасный способ купить или продать практически что угодно, от бытовой техники до недвижимости и автомобилей.'),
-                      ])),
-                  const SizedBox(height: 8),
-                  const Text(
-                      'Здесь вы найдете широкий выбор товаров и услуг, предлагаемых как частными лицами, так и компаниями. Будь то поиск квартиры, покупка машины или выбор исполнителя для домашних работ – все это доступно в несколько кликов.'),
-                  const SizedBox(height: 8),
-                  const Text('Особенности приложения:',
-                      style: TextStyle(fontSize: 16)),
-                  const SizedBox(height: 8),
-                  buildListItem('Разнообразие Категорий: ',
-                      'От недвижимости и автомобилей до бытовой техники и одежды.'),
-                  buildListItem('Поиск и Фильтры: ',
-                      'Настройте фильтры поиска, чтобы быстро найти то, что вам нужно.'),
-                  buildListItem('Безопасность: ',
-                      'Мы прилагаем все усилия, чтобы сделать сделки безопасными и прозрачными.'),
-                  buildListItem('Легкость Публикации Объявлений: ',
-                      'Продавайте ваши товары, публикуя объявления легко и быстро.'),
-                  buildListItem('Личный Кабинет: ',
-                      'Управляйте своими объявлениями и настройками через персональный аккаунт.'),
-                  const SizedBox(
-                    height: 8,
+          child: Builder(
+            builder: (context) {
+              return Padding(
+                padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+                child: DefaultTextStyle(
+                  style: TextStyle(color: Theme.of(context).colorScheme.onSurfaceVariant),
+                  textAlign: TextAlign.start,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      RichText(
+                          text: TextSpan(
+                              style: TextStyle(
+                                color: Theme.of(context).colorScheme.onSurfaceVariant,
+                              ),
+                              children: const [
+                            TextSpan(text: 'Добро пожаловать в '),
+                            TextSpan(
+                                text: 'Купи - и точка!',
+                                style: TextStyle(fontWeight: FontWeight.w700)),
+                            TextSpan(
+                                text:
+                                    ' – ваш универсальный помощник в мире объявлений! Наше приложение предоставляет удобный и безопасный способ купить или продать практически что угодно, от бытовой техники до недвижимости и автомобилей.'),
+                          ])),
+                      const SizedBox(height: 8),
+                      const Text(
+                          'Здесь вы найдете широкий выбор товаров и услуг, предлагаемых как частными лицами, так и компаниями. Будь то поиск квартиры, покупка машины или выбор исполнителя для домашних работ – все это доступно в несколько кликов.'),
+                      const SizedBox(height: 8),
+                      const Text('Особенности приложения:',
+                          style: TextStyle(fontSize: 16)),
+                      const SizedBox(height: 8),
+                      buildListItem(context, 'Разнообразие Категорий: ',
+                          'От недвижимости и автомобилей до бытовой техники и одежды.'),
+                      buildListItem(context, 'Поиск и Фильтры: ',
+                          'Настройте фильтры поиска, чтобы быстро найти то, что вам нужно.'),
+                      buildListItem(context, 'Безопасность: ',
+                          'Мы прилагаем все усилия, чтобы сделать сделки безопасными и прозрачными.'),
+                      buildListItem(context, 'Легкость Публикации Объявлений: ',
+                          'Продавайте ваши товары, публикуя объявления легко и быстро.'),
+                      buildListItem(context, 'Личный Кабинет: ',
+                          'Управляйте своими объявлениями и настройками через персональный аккаунт.'),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      RichText(
+                          text: TextSpan(
+                              style: TextStyle(
+                                color: Theme.of(context).colorScheme.onSurfaceVariant,
+                              ),
+                              children: const [
+                            TextSpan(text: 'В '),
+                            TextSpan(
+                                text: 'Купи - и точка!',
+                                style: TextStyle(fontWeight: FontWeight.w700)),
+                            TextSpan(
+                                text:
+                                    ' мы стремимся предоставить вам лучший опыт покупок и продаж. Постоянные обновления и улучшения делают наше приложение еще удобнее и функциональнее.'),
+                          ])),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      RichText(
+                          text: TextSpan(
+                              style: TextStyle(
+                                color: Theme.of(context).colorScheme.onSurfaceVariant,
+                              ),
+                              children: const [
+                            TextSpan(text: 'Спасибо, что выбрали '),
+                            TextSpan(
+                                text: 'Купи - и точка!',
+                                style: TextStyle(fontWeight: FontWeight.w700)),
+                            TextSpan(
+                                text:
+                                    ' Мы рады помочь вам сделать удачные сделки.'),
+                          ])),
+                    ],
                   ),
-                  RichText(
-                      text: const TextSpan(
-                          style: TextStyle(
-                            color: Palette.onSurfaceVariant,
-                          ),
-                          children: [
-                        TextSpan(text: 'В '),
-                        TextSpan(
-                            text: 'Купи - и точка!',
-                            style: TextStyle(fontWeight: FontWeight.w700)),
-                        TextSpan(
-                            text:
-                                ' мы стремимся предоставить вам лучший опыт покупок и продаж. Постоянные обновления и улучшения делают наше приложение еще удобнее и функциональнее.'),
-                      ])),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  RichText(
-                      text: const TextSpan(
-                          style: TextStyle(
-                            color: Palette.onSurfaceVariant,
-                          ),
-                          children: [
-                        TextSpan(text: 'Спасибо, что выбрали '),
-                        TextSpan(
-                            text: 'Купи - и точка!',
-                            style: TextStyle(fontWeight: FontWeight.w700)),
-                        TextSpan(
-                            text:
-                                ' Мы рады помочь вам сделать удачные сделки.'),
-                      ])),
-                ],
-              ),
-            ),
+                ),
+              );
+            }
           ),
         ));
   }
 
-  Widget buildListItem(String title, String description) {
+  Widget buildListItem(BuildContext context, String title, String description) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 2),
       child: Row(
@@ -116,8 +123,8 @@ class AboutScreen extends StatelessWidget {
           Expanded(
             child: RichText(
                 text: TextSpan(
-                    style: const TextStyle(
-                      color: Palette.onSurfaceVariant,
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
                     ),
                     children: [
                   TextSpan(

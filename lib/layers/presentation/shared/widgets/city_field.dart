@@ -1,5 +1,4 @@
 import 'package:buy_and_period/layers/data/mock.dart';
-import 'package:buy_and_period/layers/presentation/palette.dart';
 import 'package:buy_and_period/layers/presentation/sheets/city_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 
@@ -24,10 +23,10 @@ class _CityFieldState extends State<CityField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           'Город',
           style: TextStyle(
-              color: Palette.onSurface,
+              color: Theme.of(context).colorScheme.onSurface,
               fontSize: 16,
               fontWeight: FontWeight.w500),
         ),
@@ -53,9 +52,9 @@ class _CityFieldState extends State<CityField> {
               });
             });
           },
-          child: const Text('Добавить город',
+          child: Text('Добавить город',
               style: TextStyle(
-                  color: Palette.primary, fontWeight: FontWeight.w500)),
+                  color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500)),
         ),
       ],
     );

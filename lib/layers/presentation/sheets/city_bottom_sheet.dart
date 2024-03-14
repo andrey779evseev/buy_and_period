@@ -1,6 +1,5 @@
 import 'package:buy_and_period/layers/data/mock.dart';
 import 'package:buy_and_period/layers/presentation/layouts/bottom_sheet_layout.dart';
-import 'package:buy_and_period/layers/presentation/palette.dart';
 import 'package:buy_and_period/layers/presentation/shared/widgets/checkbox_field.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -61,10 +60,10 @@ class _CitiesBottomSheetState extends State<CitiesBottomSheet> {
             },
             child: const Icon(Icons.arrow_back, size: 18)),
         const SizedBox(width: 12),
-        const Expanded(
+        Expanded(
           child: Text('Город',
               style: TextStyle(
-                  color: Palette.onSurface,
+                  color: Theme.of(context).colorScheme.onSurface,
                   fontSize: 16,
                   fontWeight: FontWeight.w500)),
         ),
@@ -74,10 +73,10 @@ class _CitiesBottomSheetState extends State<CitiesBottomSheet> {
               _selected.clear();
             });
           },
-          child: const Text(
+          child: Text(
             'Сбросить',
             style:
-                TextStyle(color: Palette.primary, fontWeight: FontWeight.w500),
+                TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500),
           ),
         )
       ],

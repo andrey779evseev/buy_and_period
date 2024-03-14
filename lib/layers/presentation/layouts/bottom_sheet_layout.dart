@@ -1,4 +1,3 @@
-import 'package:buy_and_period/layers/presentation/palette.dart';
 import 'package:flutter/material.dart';
 
 class BottomSheetLayout extends StatelessWidget {
@@ -20,7 +19,7 @@ class BottomSheetLayout extends StatelessWidget {
                 height: 4,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(100),
-                    color: Palette.outline),
+                    color: Theme.of(context).colorScheme.outline),
               )
             ],
           ),

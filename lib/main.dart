@@ -1,3 +1,4 @@
+import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:buy_and_period/layers/presentation/router.dart';
 import 'package:buy_and_period/layers/presentation/theme.dart';
 import 'package:flutter/material.dart';
@@ -12,11 +13,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Купи и точка',
-      theme: themeData,
-      routerConfig: router,
-      debugShowCheckedModeBanner: false,
+    return ThemeProvider(
+      initTheme: themeData,
+      builder: (context, theme) => MaterialApp.router(
+        title: 'Купи и точка',
+        builder: (context, child) => child!,
+        routerConfig: router,
+        debugShowCheckedModeBanner: false,
+        theme: themeData,
+        darkTheme: darkThemeData,
+      ),
     );
   }
 }

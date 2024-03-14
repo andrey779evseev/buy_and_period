@@ -1,9 +1,7 @@
-import 'package:buy_and_period/layers/presentation/router.dart';
 import 'package:buy_and_period/layers/presentation/layouts/auth_layout.dart';
 import 'package:buy_and_period/layers/presentation/screens/auth/view/sign_in.dart';
 import 'package:buy_and_period/layers/presentation/screens/auth/view/sing_up.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({super.key});
@@ -13,9 +11,8 @@ class AuthScreen extends StatelessWidget {
     return DefaultTabController(
       length: 2,
       child: AuthLayout(
-        onBack: () {
-          context.goNamed(Routes.splash);
-        },
+        withLeading: false,
+        withPadding: false,
         body: TabBarView(
           children: [
             SignIn(),

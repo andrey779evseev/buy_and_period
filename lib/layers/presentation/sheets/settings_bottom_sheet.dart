@@ -1,5 +1,6 @@
+import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:buy_and_period/layers/presentation/layouts/bottom_sheet_layout.dart';
-import 'package:buy_and_period/layers/presentation/palette.dart';
+import 'package:buy_and_period/layers/presentation/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -18,10 +19,10 @@ class SettingsBottomSheet extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text(
+            Text(
               'Настройки',
               style: TextStyle(
-                  color: Palette.onSurfaceVariant,
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
                   fontSize: 22,
                   fontWeight: FontWeight.w500),
             ),
@@ -29,10 +30,11 @@ class SettingsBottomSheet extends StatelessWidget {
               onTap: () {
                 context.pop();
               },
-              child: const Text(
+              child: Text(
                 'Готово',
                 style: TextStyle(
-                    color: Palette.primary, fontWeight: FontWeight.w500),
+                    color: Theme.of(context).colorScheme.primary,
+                    fontWeight: FontWeight.w500),
               ),
             ),
           ],
@@ -54,11 +56,22 @@ class SettingsBottomSheet extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text('Тёмная тема',
-                style: TextStyle(color: Palette.onSurface, fontSize: 16)),
-            Switch(
-              value: false,
-              onChanged: (_) {},
+            Text('Тёмная тема',
+                style: TextStyle(
+                    color: Theme.of(context).colorScheme.onSurface,
+                    fontSize: 16)),
+            ThemeSwitcher.withTheme(
+              builder: (context, switcher, theme) => Switch(
+                value: theme.brightness == Brightness.dark,
+                onChanged: (_) {
+                  switcher.changeTheme(
+                    theme: theme.brightness == Brightness.light
+                        ? darkThemeData
+                        : themeData,
+                  );
+                  context.pop();
+                },
+              ),
             )
           ],
         )

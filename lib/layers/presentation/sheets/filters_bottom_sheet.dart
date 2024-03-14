@@ -1,4 +1,3 @@
-import 'package:buy_and_period/layers/presentation/palette.dart';
 import 'package:buy_and_period/layers/presentation/layouts/bottom_sheet_layout.dart';
 import 'package:buy_and_period/layers/presentation/shared/widgets/city_field.dart';
 import 'package:buy_and_period/layers/presentation/shared/widgets/input_field.dart';
@@ -23,10 +22,10 @@ class FiltersBottomSheet extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text(
+            Text(
               'Фильтры',
               style: TextStyle(
-                  color: Palette.onSurfaceVariant,
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
                   fontSize: 22,
                   fontWeight: FontWeight.w500),
             ),
@@ -34,10 +33,10 @@ class FiltersBottomSheet extends StatelessWidget {
               onTap: () {
                 context.pop();
               },
-              child: const Text(
+              child: Text(
                 'Применить',
                 style: TextStyle(
-                    color: Palette.primary, fontWeight: FontWeight.w500),
+                    color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500),
               ),
             ),
           ],
@@ -45,9 +44,9 @@ class FiltersBottomSheet extends StatelessWidget {
         const SizedBox(height: 8),
         const CityField(),
         const SizedBox(height: 24),
-        const Text('Цена обьявления',
+        Text('Цена обьявления',
             style: TextStyle(
-                color: Palette.onSurface,
+                color: Theme.of(context).colorScheme.onSurface,
                 fontSize: 16,
                 fontWeight: FontWeight.w500)),
         const SizedBox(height: 12),

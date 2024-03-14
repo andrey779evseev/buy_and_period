@@ -16,39 +16,42 @@ class SignIn extends StatelessWidget {
       height: 20,
     );
 
-    return Column(
-      children: [
-        InputField(
-          controller: _phone,
-          decoration: const InputDecoration(
-            labelText: 'Телефон',
-            prefixIcon: Icon(
-              Icons.local_phone_outlined,
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 100, 16, 16),
+      child: Column(
+        children: [
+          InputField(
+            controller: _phone,
+            decoration: const InputDecoration(
+              labelText: 'Телефон',
+              prefixIcon: Icon(
+                Icons.local_phone_outlined,
+              ),
             ),
+            keyboardType: TextInputType.phone,
+            autofillHints: const [AutofillHints.telephoneNumber],
           ),
-          keyboardType: TextInputType.phone,
-          autofillHints: const [AutofillHints.telephoneNumber],
-        ),
-        separator,
-        PasswordField(
-          label: 'Пароль',
-          controller: _password,
-          autofillHints: const [AutofillHints.password],
-        ),
-        separator,
-        FilledButton(
-          onPressed: () {
-            context.replaceNamed(Routes.home);
-          },
-          child: const Text('Войти'),
-        ),
-        separator,
-        TextButton(
+          separator,
+          PasswordField(
+            label: 'Пароль',
+            controller: _password,
+            autofillHints: const [AutofillHints.password],
+          ),
+          separator,
+          FilledButton(
             onPressed: () {
-              context.goNamed(Routes.forgetPassword);
+              context.replaceNamed(Routes.home);
             },
-            child: const Text('Забыли пароль?'))
-      ],
+            child: const Text('Войти'),
+          ),
+          separator,
+          TextButton(
+              onPressed: () {
+                context.goNamed(Routes.forgetPassword);
+              },
+              child: const Text('Забыли пароль?'))
+        ],
+      ),
     );
   }
 }

@@ -16,33 +16,41 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Layout(
       appBar: buildAppBar(context),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8),
-              child: CircleAvatar(
-                backgroundColor: Palette.surfaceContainer,
-                foregroundImage: NetworkImage(user.avatar),
-                maxRadius: 50,
-                minRadius: 50,
-              ),
+      body: Builder(
+        builder: (context) {
+          return Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Builder(
+                    builder: (context) {
+                      return CircleAvatar(
+                        backgroundColor: Theme.of(context).brightness == Brightness.light ? PaletteLight.surfaceContainer : PaletteDark.surfaceContainer,
+                        foregroundImage: NetworkImage(user.avatar),
+                        maxRadius: 50,
+                        minRadius: 50,
+                      );
+                    }
+                  ),
+                ),
+                Text(user.name,
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.onSurface,
+                        fontSize: 22,
+                        fontWeight: FontWeight.w500)),
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 16),
+                  child: Divider(),
+                ),
+                buildFooterItem(context, 'E-mail', user.email),
+                buildFooterItem(context, 'Телефон', user.phone),
+              ],
             ),
-            Text(user.name,
-                style: const TextStyle(
-                    color: Palette.onSurface,
-                    fontSize: 22,
-                    fontWeight: FontWeight.w500)),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 16),
-              child: Divider(),
-            ),
-            buildFooterItem('E-mail', user.email),
-            buildFooterItem('Телефон', user.phone),
-          ],
-        ),
+          );
+        }
       ),
       bottomNavigationBar: owner ? const NavBar() : null,
       drawer: const NavDrawer(),
@@ -73,7 +81,7 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  Widget buildFooterItem(String label, String value) {
+  Widget buildFooterItem(BuildContext context, String label, String value) {
     return SizedBox(
       width: double.infinity,
       child: Padding(
@@ -82,12 +90,12 @@ class ProfileScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(label,
-                style: const TextStyle(
-                    color: Palette.onSurfaceVariant,
+                style: TextStyle(
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
                     fontSize: 12,
                     fontWeight: FontWeight.w500)),
             Text(value,
-                style: const TextStyle(color: Palette.onSurface, fontSize: 16))
+                style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 16))
           ],
         ),
       ),

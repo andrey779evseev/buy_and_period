@@ -1,4 +1,3 @@
-import 'package:buy_and_period/layers/presentation/palette.dart';
 import 'package:flutter/material.dart';
 
 class EmptyListView extends StatelessWidget {
@@ -20,12 +19,12 @@ class EmptyListView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Icon(icon, size: 120, color: Palette.outlineVariant),
+          Icon(icon, size: 120, color: Theme.of(context).colorScheme.outlineVariant),
           const SizedBox(height: 16),
           Text(
             title,
-            style: const TextStyle(
-                color: Palette.onSurface,
+            style: TextStyle(
+                color: Theme.of(context).colorScheme.onSurface,
                 fontSize: 22,
                 fontWeight: FontWeight.w500),
             textAlign: TextAlign.center,
@@ -33,7 +32,7 @@ class EmptyListView extends StatelessWidget {
           const SizedBox(height: 16),
           DefaultTextStyle(
               textAlign: TextAlign.center,
-              style: const TextStyle(color: Palette.onSurfaceVariant),
+              style: TextStyle(color: Theme.of(context).colorScheme.onSurfaceVariant),
               child: description)
         ],
       ),

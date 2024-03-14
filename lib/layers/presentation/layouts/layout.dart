@@ -1,3 +1,4 @@
+import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 
 class Layout extends StatelessWidget {
@@ -17,18 +18,20 @@ class Layout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawerEnableOpenDragGesture: true,
-      appBar: appBar,
-      body: SafeArea(
-        child: SizedBox(
-          width: double.infinity,
-          child: body,
+    return ThemeSwitchingArea(
+      child: Scaffold(
+        drawerEnableOpenDragGesture: true,
+        appBar: appBar,
+        body: SafeArea(
+          child: SizedBox(
+            width: double.infinity,
+            child: body,
+          ),
         ),
+        bottomNavigationBar: bottomNavigationBar,
+        floatingActionButton: floatingActionButton,
+        drawer: drawer,
       ),
-      bottomNavigationBar: bottomNavigationBar,
-      floatingActionButton: floatingActionButton,
-      drawer: drawer,
     );
   }
 }

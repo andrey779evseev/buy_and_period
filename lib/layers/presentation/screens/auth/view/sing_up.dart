@@ -1,10 +1,8 @@
-import 'package:buy_and_period/layers/presentation/palette.dart';
 import 'package:buy_and_period/layers/presentation/router.dart';
 import 'package:buy_and_period/layers/presentation/shared/widgets/checkbox_field.dart';
 import 'package:buy_and_period/layers/presentation/shared/widgets/input_field.dart';
 import 'package:buy_and_period/layers/presentation/shared/widgets/password_field.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
 class SignUp extends StatelessWidget {
@@ -20,60 +18,63 @@ class SignUp extends StatelessWidget {
       height: 20,
     );
 
-    return Column(
-      children: [
-        InputField(
-          controller: _phone,
-          decoration: const InputDecoration(
-            labelText: 'Телефон',
-            prefixIcon: Icon(
-              Icons.local_phone_outlined,
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 100, 16, 16),
+      child: Column(
+        children: [
+          InputField(
+            controller: _phone,
+            decoration: const InputDecoration(
+              labelText: 'Телефон',
+              prefixIcon: Icon(
+                Icons.local_phone_outlined,
+              ),
+            ),
+            keyboardType: TextInputType.phone,
+            autofillHints: const [AutofillHints.telephoneNumber],
+          ),
+          separator,
+          PasswordField(
+            label: 'Пароль',
+            controller: _password,
+            autofillHints: const [AutofillHints.newPassword],
+          ),
+          separator,
+          PasswordField(
+            label: 'Повторите пароль',
+            controller: _password,
+            autofillHints: const [AutofillHints.newPassword],
+          ),
+          separator,
+          ValueListenableBuilder(
+            valueListenable: _agreed,
+            builder: (context, value, _) => CheckboxField(
+              title: RichText(
+                  text: TextSpan(
+                      text: 'Я согласен ',
+                      style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 16),
+                      children: [
+                    TextSpan(
+                        text: 'с Правилами и условиями использования',
+                        style: TextStyle(color: Theme.of(context).colorScheme.primary))
+                  ])),
+              value: value,
+              padding: const EdgeInsets.fromLTRB(0, 6, 0, 14),
+              alignment: CrossAxisAlignment.end,
+              onChange: (bool value) {
+                _agreed.value = value;
+              },
             ),
           ),
-          keyboardType: TextInputType.phone,
-          autofillHints: const [AutofillHints.telephoneNumber],
-        ),
-        separator,
-        PasswordField(
-          label: 'Пароль',
-          controller: _password,
-          autofillHints: const [AutofillHints.newPassword],
-        ),
-        separator,
-        PasswordField(
-          label: 'Повторите пароль',
-          controller: _password,
-          autofillHints: const [AutofillHints.newPassword],
-        ),
-        separator,
-        ValueListenableBuilder(
-          valueListenable: _agreed,
-          builder: (context, value, _) => CheckboxField(
-            title: RichText(
-                text: const TextSpan(
-                    text: 'Я согласен ',
-                    style: TextStyle(color: Palette.onSurface, fontSize: 16),
-                    children: [
-                  TextSpan(
-                      text: 'с Правилами и условиями использования',
-                      style: TextStyle(color: Palette.primary))
-                ])),
-            value: value,
-            padding: const EdgeInsets.fromLTRB(0, 6, 0, 14),
-            alignment: CrossAxisAlignment.end,
-            onChange: (bool value) {
-              _agreed.value = value;
+          separator,
+          FilledButton(
+            onPressed: () {
+              context.replaceNamed(Routes.home);
             },
+            child: const Text('Зарегистрироваться'),
           ),
-        ),
-        separator,
-        FilledButton(
-          onPressed: () {
-            context.replaceNamed(Routes.home);
-          },
-          child: const Text('Зарегистрироваться'),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

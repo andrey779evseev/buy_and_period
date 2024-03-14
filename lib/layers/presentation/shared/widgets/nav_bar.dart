@@ -1,4 +1,3 @@
-import 'package:buy_and_period/layers/presentation/palette.dart';
 import 'package:buy_and_period/layers/presentation/router.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -55,30 +54,30 @@ class _NavBarState extends State<NavBar> {
             break;
         }
       },
-      destinations: const [
+      destinations: [
         NavigationDestination(
             selectedIcon: Icon(
               Icons.assignment,
-              color: Palette.onPrimaryContainer,
+              color: Theme.of(context).colorScheme.onPrimaryContainer,
             ),
-            icon: Icon(Icons.assignment_outlined),
+            icon: const Icon(Icons.assignment_outlined),
             label: 'Объявления'),
         NavigationDestination(
             selectedIcon: Icon(
               Icons.favorite,
-              color: Palette.onPrimaryContainer,
+              color: Theme.of(context).colorScheme.onPrimaryContainer,
             ),
-            icon: Icon(Icons.favorite_border),
+            icon: const Icon(Icons.favorite_border),
             label: 'Избранное'),
         NavigationDestination(
             selectedIcon: Badge(
-              label: Text('3'),
+              label: const Text('3'),
               child: Icon(
                 Icons.account_circle,
-                color: Palette.onPrimaryContainer,
+                color: Theme.of(context).colorScheme.onPrimaryContainer,
               ),
             ),
-            icon: Badge(
+            icon: const Badge(
               label: Text('3'),
               child: Icon(Icons.account_circle_outlined),
             ),
